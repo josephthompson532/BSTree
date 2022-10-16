@@ -21,7 +21,6 @@ void BSTree::PrintCourseList(Course* course) {
           cout << prereqObj->courseNumber << " " << prereqObj->courseName << " " << endl;
       }
       
-      cout << endl;
       
       PrintCourseList(course->right);
       
@@ -80,7 +79,7 @@ Course* BSTree::Search(string courseNumber) {
 void BSTree::PrintCourse(Course* course) {
     cout << course->courseNumber << ": " << course->courseName << endl;
     
-    cout << "Prerequisites: ";
+    cout << "Prerequisites: " << endl;
     for( auto prereq : course->prereqs ) {
         Course* prereqObj = Search(prereq);
         cout << prereqObj->courseNumber << " " << prereqObj->courseName << " " << endl;

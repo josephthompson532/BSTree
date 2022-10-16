@@ -99,13 +99,16 @@ int main(int argc, char **argv)
             cin >> userCourseNumber;
             
             Course* chosenCourse = tree->Search(userCourseNumber);
+            cout << endl;
             
             tree->PrintCourse(chosenCourse);
             break;
             
         }
         default:
-            cout << "choose something different";
+            cout << endl;
+            cout << "That is not a valid option. \nChoose only 1, 2, 3, or 9.";
+            cout << endl << endl;
             break;
         }
     }
