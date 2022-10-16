@@ -10,23 +10,25 @@ void BSTree::PrintCourseList(Course* course) {
       
       PrintCourseList(course->left);
       
+      cout << endl;
+      
       cout << course->courseNumber << ": "; 
       cout << course->courseName << endl;
   
-      cout << "Prerequisites: ";
+      cout << "Prerequisites: " << endl;
       for( auto prereq : course->prereqs ) {
-          cout << prereq << " ";
+          Course* prereqObj = Search(prereq);
+          cout << prereqObj->courseNumber << " " << prereqObj->courseName << " " << endl;
       }
       
-      cout << endl << endl;;
+      cout << endl;
       
       PrintCourseList(course->right);
       
 }
 
 void BSTree::Insert(Course* course) {
-    // FIXME (5) Implement inserting a bid into the tree
-    
+
     if (this->root == nullptr) {
         this->root = course;
         course->left = nullptr;
@@ -57,8 +59,7 @@ void BSTree::Insert(Course* course) {
 }
 
 Course* BSTree::Search(string courseNumber) {
-    // FIXME (7) Implement searching the tree for a bid
-    // set current node equal to root
+
     Course* cur = this->root;
     
     while (cur != nullptr) {
@@ -81,7 +82,8 @@ void BSTree::PrintCourse(Course* course) {
     
     cout << "Prerequisites: ";
     for( auto prereq : course->prereqs ) {
-      cout << prereq << " ";
+        Course* prereqObj = Search(prereq);
+        cout << prereqObj->courseNumber << " " << prereqObj->courseName << " " << endl;
     }
     
     cout << endl;
